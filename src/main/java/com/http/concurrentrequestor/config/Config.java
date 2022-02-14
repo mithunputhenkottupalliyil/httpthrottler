@@ -11,9 +11,11 @@ import java.util.Map;
 
 @Component
 @ConfigurationProperties
-@PropertySources({@PropertySource("file:${property.root}/${env}/requestconfig.properties"),})
+@PropertySources({@PropertySource("file:${property.root}/${env}/requestconfig.properties"),
+        @PropertySource("file:${property.root}/${env}/commonconfig.properties")})
 @Data
 public class Config {
     private String serviceCount;
     private Map<ServiceName, ServiceAttributes> serviceConfig;
+    private ConnectionPoolAttributes connectionPoolAttributes;
 }
